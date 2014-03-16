@@ -14,9 +14,9 @@ Game types:
 
 Format of the 'regulations.txt':
 
-'regulations.txt' has N lines, each line contains three numbers (i, j, k) where k is i merged with j.
-'regulations.txt' can't contain two lines 1) i_1, j_1, k_1 2) i_2, j_2, k_2, where i_1 = i_2 and j_1 = j_2.
-When your 'regulations.txt' are set up, chose the third option in the start menu of the game.
+'regulations.txt' has N lines, each line contains three numbers (i, j, k, separeted by space) where k is i merged with j.
+'regulations.txt' can't contain two lines (1: i_1, j_1, k_1 and 2: i_2, j_2, k_2), where i_1 = i_2 and j_1 = j_2.
+When your 'regulations.txt' are set up, you can play according to them chosing the third option in the start menu of the game.
   
 
 The full project in one file: https://www.dropbox.com/s/84iapnj2fe0rm9k/Game.rar
