@@ -1,16 +1,21 @@
+/*This game is based of 2048 game http://gabrielecirulli.github.io/2048/ */
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
 #include <vector>
 #include <set>
 #include <map>
+#include <queue>
+#include <deque>
 #include <string>
 #include <cstring>
 #include <cstdlib>
+#include <memory.h>
 #include <iomanip>
 #include <windows.h>
 #include <conio.h>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -29,8 +34,8 @@ public:
     {
         fibnumbers[0] = 1;
         fibnumbers[1] = 1;
-        dbls[0] = 1;
-        dbls[1] = 2;
+        dbls[0] = 2;
+        dbls[1] = 4;
         for (int i = 2; i < 20; ++i)
             fibnumbers[i] = fibnumbers[i - 1] + fibnumbers[i - 2],
             dbls[i] = dbls[i - 1] * 2;
@@ -46,8 +51,8 @@ public:
     {
         fibnumbers[0] = 1;
         fibnumbers[1] = 1;
-        dbls[0] = 1;
-        dbls[1] = 2;
+        dbls[0] = 2;
+        dbls[1] = 4;
         for (int i = 2; i < 20; ++i)
             fibnumbers[i] = fibnumbers[i - 1] + fibnumbers[i - 2],
             dbls[i] = dbls[i - 1] * 2;
@@ -108,7 +113,11 @@ public:
             res = v[rand() % v.size()];
             field[res.first][res.second] = substitute.begin()->first.second;
         }
-        else if (rand() % 6 == 1) field[res.first][res.second] = substitute.begin()->second;
+        else
+        {
+            if (score > 1000 && (rand() % 7 == 1)) field[res.first][res.second] = substitute.begin()->second;
+            else if (rand() % 12 == 1) field[res.first][res.second] = substitute.begin()->second;
+        }
     }
     vector< int > Move(vector< int > in)
     {
@@ -183,18 +192,21 @@ public:
                 field[ii][jj] = transposition[idx];
             }
         }
-        if (flag) FillEmpty();
+        if (flag) FillEmpty(); // if something has changed then we have to add anither number and it will be definitely added
     }
     bool GameOver()
     {
-        for (int i = 0; i < n; ++i)
-            for (int j = 0; j < n; ++j)
+        for (int i = 0; i < n - 1; ++i)
+            for (int j = 0; j < n - 1; ++j)
             {
                 if (substitute.find(make_pair(field[i][j], field[i + 1][j])) != substitute.end()) return false;
                 if (substitute.find(make_pair(field[i][j], field[i][j + 1])) != substitute.end()) return false;
                 if (substitute.find(make_pair(field[i + 1][j], field[i][j])) != substitute.end()) return false;
                 if (substitute.find(make_pair(field[i][j + 1], field[i][j])) != substitute.end()) return false;
                 if (field[i][j] == 0) return false;
+                if (field[i + 1][j] == 0) return false;
+                if (field[i][j + 1] == 0) return false;
+                if (field[i + 1][j + 1] == 0) return false;
             }
         return true;
     }
@@ -204,15 +216,15 @@ public:
         {
             printf("\nSCORE");
             if (deltascore == 0)
-                for (int i = 0; i < 6 * n - 5 - 8 ; ++i)
+                for (int i = 0; i < 6 * n - 5 - 6 ; ++i)
                     printf(" ");
             else
             {
-                printf(" +%6d", deltascore);
-                for (int i = 0; i < 6 * n - 5 - 8 - 8; ++i)
+                printf(" +%4d", deltascore);
+                for (int i = 0; i < 6 * n - 5 - 6 - 6; ++i)
                     printf(" ");
             }
-            printf("%8d", score);
+            printf("%6d", score);
             printf("\n");
         }
         else
@@ -263,19 +275,25 @@ public:
         printf("1. Simple 2048\n");
         printf("2. 2584 (Almost the same as 'Simple' is but Fibbonachi numbers are used instead of doubles)\n");
         printf("3. Load from file. For more information read README\n");
-        printf("Waiting for type number...\n");
+        printf("Waiting for the type number...\n");
         scanf("%d", &gameflag);
-        printf("Do you want play 4x4 game or use your own value? y/n...\n");
-        char c = 'y';
+        printf("Do you want to use your own value and play NxN instead of 4x4? y/n...\n");
+        char c = 'n';
         cin >> c;
-        if (c == 'n')
+        if (c == 'y')
         {
             printf("Type then N and the field will be NxN\n");
             printf("Waiting for N...\n");
             scanf("%d", &n);
+            if (n == 4)
+            {
+                printf("Are you seriously? You're a funny guy!\n");
+                Sleep(1700);
+            }
         }
         system("cls");
-        while(c != 'e')
+        c = 'r';
+        while(c == 'r')
         {
             A = new Game(n);
             A->Init(gameflag);
@@ -291,12 +309,17 @@ public:
                     case 77: A->Move(3); break;
                 }
                 if (A->IsChanged())
+                {
                     system("cls");
-                A->PrintField();
+                    A->PrintField();
+                }
             }
             printf("The game has overed, your score is %d\n", A->Score());
-            printf("Press 'e' if you want to finish, otherwise press any other key...\n");
-            cin >> c;
+            printf("Press r to restart if you want to finish, otherwise press 'e'...\n");
+            while (cin >> c)
+                if (c == 'e' || c == 'r')
+                    break;
+            system("cls");
         }
     }
 };
