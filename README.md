@@ -20,6 +20,7 @@ When your 'regulations.txt' are set up, you can play according to them chosing t
   
 
 The full project in one file: https://www.dropbox.com/s/84iapnj2fe0rm9k/Game.rar
+The project with Game.exe in the folder: https://www.dropbox.com/sh/qwakqmyakoikafv/1062QpaQyS
 Runs best on Windows with Code::Blocks: http://www.codeblocks.org/downloads 
 
 Created by Vladislav Shablinsky. Similar to http://gabrielecirulli.github.io/2048/
