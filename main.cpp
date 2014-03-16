@@ -1,4 +1,4 @@
-/*This game is based oт 2048 game http://gabrielecirulli.github.io/2048/ 
+/*This game is based on 2048 game http://gabrielecirulli.github.io/2048/ 
 
 
 ---------Created by Vladislav Shablinsky------------
@@ -33,7 +33,7 @@ protected:
     int **field;
     int flag; // if the field changes
     int score, deltascore;
-    int n; // the number of rows and coloumns
+    int n; // the number of rows and colomns
     map< pair< int, int >, int > substitute;
 public:
     Game()
@@ -196,7 +196,7 @@ public:
                 field[ii][jj] = transposition[idx];
             }
         }
-        if (flag) FillEmpty(); // if something has changed then we have to add anither number and it will be definitely added
+        if (flag) FillEmpty(); // if something has changed then we have to add another number and it will be definitely added
     }
     bool GameOver()
     {
