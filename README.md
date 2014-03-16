@@ -10,7 +10,7 @@ Game types:
 
 2. Two numbers merge if they are i-th and (i+1)-th Fibbonachi numbers. The result is the (i+2)-th Fibbonachi number.
 
-3. You give the rules when two numbers merge. 'regulations.txt' contains these rules
+3. You give the rules when two numbers merge. 'regulations.txt' contains these rules.
 
 Format of the 'regulations.txt':
 
