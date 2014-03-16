@@ -1,4 +1,4 @@
-2048benefits
+2048benefits (The console version of 2048, benefits included)
 ============
 
 How to play: 
