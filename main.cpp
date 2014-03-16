@@ -1,4 +1,10 @@
-/*This game is based of 2048 game http://gabrielecirulli.github.io/2048/ */
+/*This game is based of 2048 game http://gabrielecirulli.github.io/2048/ 
+
+
+---------Created by Vladislav Shablinsky------------
+
+
+*/
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
@@ -113,11 +119,9 @@ public:
             res = v[rand() % v.size()];
             field[res.first][res.second] = substitute.begin()->first.second;
         }
-        else
-        {
-            if (score > 1000 && (rand() % 7 == 1)) field[res.first][res.second] = substitute.begin()->second;
-            else if (rand() % 12 == 1) field[res.first][res.second] = substitute.begin()->second;
-        }
+        if (score > 1000 && (rand() % 5 == 1)) field[res.first][res.second] = substitute.begin()->second;
+        else if (rand() % 10 == 1) field[res.first][res.second] = substitute.begin()->second;
+
     }
     vector< int > Move(vector< int > in)
     {
