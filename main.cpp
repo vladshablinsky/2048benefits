@@ -1,4 +1,4 @@
-/*This game is based of 2048 game http://gabrielecirulli.github.io/2048/ 
+/*This game is based oт 2048 game http://gabrielecirulli.github.io/2048/ 
 
 
 ---------Created by Vladislav Shablinsky------------
