@@ -207,6 +207,10 @@ public:
                 if (substitute.find(make_pair(field[i][j], field[i][j + 1])) != substitute.end()) return false;
                 if (substitute.find(make_pair(field[i + 1][j], field[i][j])) != substitute.end()) return false;
                 if (substitute.find(make_pair(field[i][j + 1], field[i][j])) != substitute.end()) return false;
+                if (substitute.find(make_pair(field[i + 1][j + 1], field[i][j + 1])) != substitute.end()) return false;
+                if (substitute.find(make_pair(field[i][j + 1], field[i + 1][j + 1])) != substitute.end()) return false;
+                if (substitute.find(make_pair(field[i + 1][j + 1], field[i + 1][j])) != substitute.end()) return false;
+                if (substitute.find(make_pair(field[i + 1][j], field[i + 1][j + 1])) != substitute.end()) return false;
                 if (field[i][j] == 0) return false;
                 if (field[i + 1][j] == 0) return false;
                 if (field[i][j + 1] == 0) return false;
@@ -277,7 +281,7 @@ public:
     {
         printf("Chose the type of game:\n");
         printf("1. Simple 2048\n");
-        printf("2. 2584 (Almost the same as 'Simple' is but Fibbonachi numbers are used instead of doubles)\n");
+        printf("2. 2584 (Almost the same as 'Simple 2048' is but Fibbonachi numbers are used instead of doubles)\n");
         printf("3. Load from file. For more information read README\n");
         printf("Waiting for the type number...\n");
         scanf("%d", &gameflag);
