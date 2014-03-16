@@ -1,4 +1,4 @@
-/*This game is based on 2048 game http://gabrielecirulli.github.io/2048/ 
+/*This game is based on 2048 game http://gabrielecirulli.github.io/2048/
 
 
 ---------Created by Vladislav Shablinsky------------
@@ -319,7 +319,7 @@ public:
                 }
             }
             printf("The game has overed, your score is %d\n", A->Score());
-            printf("Press r to restart if you want to finish, otherwise press 'e'...\n");
+            printf("Press 'r' if you want to restart, otherwise press 'e'...\n");
             while (cin >> c)
                 if (c == 'e' || c == 'r')
                     break;
