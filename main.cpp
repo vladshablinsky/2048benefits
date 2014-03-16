@@ -163,7 +163,7 @@ public:
         bool rvrs = (direction == 0 || direction == 1);
         for (int i = 0; i < n; ++i)
         {
-            vector < int > transposition(4);
+            vector < int > transposition(n);
             for (int j = 0; j < n; ++j)
             {
                 int ii = i, jj = j;
